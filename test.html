@@ -327,71 +327,9 @@ I like archive.org because it has over <b>'+ this.top.counts.movies +
     <div class="row justify-content-center">
       <div class="info col-auto">
         <div class="bg-blue shadow mt-3">
-          <div class="bg-orange text-center fw-500 py-4 px-3 mb-5">
-            <h1 class="text-center fw-900 mb-0">
-              ⬥ STARPOINT ⬥
-            </h1>
-          </div>
+          
           <ul class="list-unstyled text-center fw-700 px-4">
-            <li class="d-flex align-items-center justify-content-center separator mb-3">
-              Смотреть стримы
-            </li>
-            <li class="mb-3">
-              <a href="https://www.youtube.com/channel/UCUI8kyye7YBMc15fJnIJ8zQ"
-                 target="_blank"
-                 class="text-decoration-none link link-yt">
-                <i class="me-2 align-middle fab fa-lg fa-fw fa-youtube"></i>YouTube канал
-              </a>
-            </li>
-            <li class="mb-5">
-              <a href="https://www.twitch.tv/starpointstream"
-                 target="_blank"
-                 class="text-decoration-none link link-tw text-truncate">
-                <i class="me-2 align-middle fab fa-lg fa-fw fa-twitch"></i>Twitch канал
-              </a>
-            </li>
-            <li class="d-flex align-items-center justify-content-center separator mb-3">
-              Донатить деньги
-            </li>
-            <li class="mb-3">
-              <a href="https://www.donationalerts.com/r/starpoint"
-                 target="_blank"
-                 class="text-decoration-none link link-da">
-                <i class="me-2 align-middle fas fa-lg fa-fw fa-exclamation-circle"></i>Donation Alerts
-              </a>
-            </li>
-            <li class="mb-5">
-              <a href="https://donate.qiwi.com/payin/Starpoint"
-                 target="_blank"
-                 class="text-decoration-none link link-qw">
-                <i class="me-2 align-middle-- fas fa-lg fa-fw fa-kiwi-bird"></i>QIWI Donate
-              </a>
-            </li>
-            <li class="d-flex align-items-center justify-content-center separator mb-3">
-              Общаться словами
-            </li>
-            <li class="mb-3">
-              <a href="https://discord.gg/ekS4qYt"
-                 target="_blank"
-                 class="text-decoration-none link link-di">
-                <i class="me-2 align-middle fab fa-lg fa-fw fa-discord"></i>Discord сервер
-              </a>
-            </li>
-            <li class="mb-5">
-              <a href="tg://resolve?domain=starpointchat"
-                 class="text-decoration-none link link-tg">
-                <i class="me-2 align-middle fab fa-lg fa-fw fa-telegram"></i>Telegram чат
-              </a>
-            </li>
-            <li class="d-flex align-items-center justify-content-center separator mb-3">
-              Читать новости
-            </li>
-            <li class="pb-5">
-              <a href="tg://resolve?domain=starpointstream"
-                 class="text-decoration-none link link-tg">
-                <i class="me-2 align-middle fab fa-lg fa-fw fa-telegram-plane"></i>Telegram канал
-              </a>
-            </li>
+            
             <li>
               df
 
@@ -432,25 +370,23 @@ I like archive.org because it has over <b>'+ this.top.counts.movies +
         //  ajaxURL: "https://archive.org/metadata/SonnissGameAudioGDCPart6/files", //ajax URL
         //});
         //Build Tabulator
+        //Build Tabulator
         var table = new Tabulator("#example-table", {
           height: "311px",
           layout: "fitColumns",
+          ajaxURL: "json/2020.json",
+          ajaxProgressiveLoad: "scroll",
+          paginationSize: 20,
           placeholder: "No Data Set",
-          //ajaxURL:"https://archive.org/metadata/SonnissGameAudioGDCPart6/files",
           columns: [
             { title: "Name", field: "name", sorter: "string", width: 200 },
             { title: "Progress", field: "progress", sorter: "number", formatter: "progress" },
             { title: "Gender", field: "gender", sorter: "string" },
-            { title: "Rating", field: "rating", formatter: "star", hozAlign: "center", width: 100 },
-            { title: "Favourite Color", field: "col", sorter: "string" },
-            { title: "Date Of Birth", field: "dob", sorter: "date", hozAlign: "center" },
-            { title: "Driver", field: "car", hozAlign: "center", formatter: "tickCross", sorter: "boolean" },
+            { title: "Rating", field: "rating", formatter: "star", align: "center", width: 100 },
+            { title: "Favourite Color", field: "col", sorter: "string", sortable: false },
+            { title: "Date Of Birth", field: "dob", sorter: "date", align: "center" },
+            { title: "Driver", field: "car", align: "center", formatter: "tickCross", sorter: "boolean" },
           ],
-        });
-
-        //trigger AJAX load on "Load Data via AJAX" button click
-        document.getElementById("ajax-trigger").addEventListener("click", function () {
-          table.setData("https://archive.org/metadata/SonnissGameAudioGDCPart6/files");
         });
       </script>
     </div>

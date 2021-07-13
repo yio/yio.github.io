@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css"
+          rel="stylesheet">
+
+    <link rel='stylesheet'
+          href='bootstrap.min.css'>
+
+    <script type="text/javascript"
+            src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+
+
+    <script type="text/javascript"
+            src="json/2020.json"></script>
+</head>
+<style>
+    html,
+    body,
+    .container {
+        height: 100%;
+    }
+    #example-table {
+        height: calc(100% - 150px);
+    }
+    body {
+        margin: 0;
+    }
+</style>
+<body>
+    <div class='container'>
+        <a href="https://archive.org/download/SonnissGameAudioGDCPart6/344 Audio - British Soldier Voices/Cover Me I'm Reloading.wav">dfdf</a>
+        <div id="example-table"></div>
+        <!-- ---------------------------------------------------------------- -->
+        <script type="text/javascript">
+            var local_data = gdc_2020;  //<!-- name inside json file -->
+            var table = new Tabulator("#example-table", {
+                //height:"100%",
+                data: local_data,
+                //pagination: "local",
+                //paginationSize: 50,
+                layout: "fitColumns",
+                placeholder: "No Data Available",
+                columns: [
+                    //{ title: "#", formatter: "rownum", align: "center", width: 40 },
+                    { title: "Name", field: "name", },
+                    { title: "Format", field: "format", width: 100, },
+                    {
+                        title: "Name", field: "name", formatter: function (cell, formatterParams) {
+                            var value = cell.getValue();
+                            return "<audio preload='none' controls src='https://archive.org/download/SonnissGameAudioGDCPart6/" + value + "'></audio>";
+                        }
+                    },
+                    { title: "Length", field: "length", width: 100, },
+                ],
+            });
+            table.setFilter([
+                //{ field: "format", type: "=", value: "WAVE" }, //name must be steve, bob or jim
+            ]);
+        </script>
+        <!-- -------------------------------------------------------------------- -->
+    </div>
+    </div>
+</body>
+
+</html>
